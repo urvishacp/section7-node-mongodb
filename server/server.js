@@ -33,6 +33,14 @@ app.post('/users', (req, res) => {
 
 });
 
+app.get('/todos', (req, res) => {
+    toDoModel.find().then((doc) => {
+        res.send({doc})
+    }, (e) => {
+        res.status(400).send('not able to fetch the data', e);
+    });
+});
+
 app.listen(3000, () => {
     console.log("Starting on port 3000");
 });
